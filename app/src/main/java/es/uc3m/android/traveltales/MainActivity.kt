@@ -15,14 +15,17 @@ import es.uc3m.android.traveltales.ui.theme.TravelTalesTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            TravelTalesTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
-                }
-            }
-        }
+        setContentView(R.layout.home)
+//        setContent {
+//            TravelTalesTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+//                    Greeting("Android")
+//
+//
+//                }
+//            }
+//        }
     }
 }
 
