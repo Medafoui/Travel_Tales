@@ -1,4 +1,6 @@
 package es.uc3m.android.traveltales
+import android.app.Activity
+import android.view.View
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,11 +13,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import es.uc3m.android.traveltales.ui.theme.TravelTalesTheme
+import android.content.Intent
+import android.widget.Button
 
-class MainActivity : ComponentActivity() {
+class MainActivity : Activity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
+
+        // Find the Sign Up button by its ID
+        findViewById<Button>(R.id.buttonSignUp).setOnClickListener {
+            // Create an Intent to start SignUpActivity
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+
+        //setContentView(R.layout.activity_signup)
 //        setContent {
 //            TravelTalesTheme {
 //                // A surface container using the 'background' color from the theme
@@ -43,4 +56,4 @@ fun GreetingPreview() {
     TravelTalesTheme {
         Greeting("Android")
     }
-}
+}}
