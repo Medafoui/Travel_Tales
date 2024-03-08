@@ -28,32 +28,34 @@ class MainActivity : Activity() {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
 
-        //setContentView(R.layout.activity_signup)
-//        setContent {
-//            TravelTalesTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-//                    Greeting("Android")
-//
-//
-//                }
-//            }
-//        }
-    }
-}
+        // Find the Login button by its ID
+        findViewById<Button>(R.id.buttonLogin).setOnClickListener {
+            // Create an Intent to start SignUpActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-            text = "Hello $name!",
-            modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TravelTalesTheme {
-        Greeting("Android")
     }
-}}
+}}}
+
+
+
+
+
+
+
+//
+//@Composable
+//fun Greeting(name: String, modifier: Modifier = Modifier) {
+//    Text(
+//            text = "Hello $name!",
+//            modifier = modifier
+//    )
+//}
+
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+//    TravelTalesTheme {
+//        Greeting("Android")
+//    }
+//}}
