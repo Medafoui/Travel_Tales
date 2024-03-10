@@ -34,6 +34,10 @@ class MainActivity : Activity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
 
+
+
+
+
     }
 }}}
 
