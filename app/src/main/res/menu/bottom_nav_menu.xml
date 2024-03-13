@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_me"
+        android:title="Me"
+        android:icon="@drawable/account_circle_24" />
+    <item
+        android:id="@+id/navigation_activity"
+        android:title="Activity"
+        android:icon="@drawable/people_outline_24" />
+    <item
+        android:id="@+id/navigation_notifications"
+        android:title="Notifications"
+        android:icon="@drawable/bell_outline" />
+    <item
+        android:id="@+id/navigation_explore"
+        android:title="Explore"
+        android:icon="@drawable/baseline_search_24" />
+</menu>

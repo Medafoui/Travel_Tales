@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent = Intent(this, Explore::class.java)
+        val intent = Intent(this, Profile::class.java)
         startActivity(intent)
 
     }

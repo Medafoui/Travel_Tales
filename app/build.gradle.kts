@@ -77,5 +77,5 @@ dependencies {
 
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("androidx.cardview:cardview:1.0.0")
-    implementation ("com.google.android.material:material:1.4.0")
+    implementation ("com.google.android.material:material:1.11.0")
 }
