@@ -36,7 +36,7 @@
                 android:layout_marginStart="20dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_main_category"
+                android:id="@+id/rv_friends_trip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -59,8 +59,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
                 tools:listitem="@layout/friend_row" />
-
-
 
         </LinearLayout>
     </ScrollView>
