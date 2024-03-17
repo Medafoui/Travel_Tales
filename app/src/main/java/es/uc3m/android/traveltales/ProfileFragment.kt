@@ -25,7 +25,7 @@ class ProfileFragment : Fragment() {
 
         // Find the add trip button by its ID and set a click listener
         view.findViewById<Button>(R.id.btn_add).setOnClickListener {
-            // Start LoginActivity when the login button is clicked
+            // Start Add_Trp_Activity when the button is clicked
             val intent = Intent(activity, Add_Trip_Activity::class.java)
             startActivity(intent)
         }
