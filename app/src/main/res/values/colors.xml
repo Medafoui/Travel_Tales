@@ -10,4 +10,10 @@
     <color name="red">#DE2B52</color>
     <color name="grey">#D3D1D1</color>
     <color name="transparent_grey">#80000000</color>
+    <color name="red">#FF0000</color>
+    <color name="light_gray">#CCCCCC</color>
+    <color name="light_blue">#ADD8E6</color>
+    <color name="beige">#E4E4C8</color>
+
+
 </resources>
