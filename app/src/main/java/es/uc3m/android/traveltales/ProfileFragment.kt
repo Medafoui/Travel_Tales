@@ -25,8 +25,15 @@ class ProfileFragment : Fragment() {
 
         // Find the add trip button by its ID and set a click listener
         view.findViewById<Button>(R.id.btn_add).setOnClickListener {
-            // Start Add_Trp_Activity when the button is clicked
+            // Start Add_Trip_Activity when the button is clicked
             val intent = Intent(activity, Add_Trip_Activity::class.java)
+            startActivity(intent)
+        }
+
+        // Find the travel statistics button by its ID and set a click listener
+        view.findViewById<Button>(R.id.btn_stats).setOnClickListener {
+            // Start StatsActivity when the button is clicked
+            val intent = Intent(activity, StatsActivity::class.java)
             startActivity(intent)
         }
 
