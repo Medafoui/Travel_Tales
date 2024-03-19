@@ -22,6 +22,7 @@ class Profile : AppCompatActivity() {
                 R.id.navigation_me -> replaceFragment(ProfileFragment())
                 R.id.navigation_explore -> replaceFragment(ExploreFragment())
                 R.id.navigation_trips -> replaceFragment(MyTripsFragment())
+                R.id.navigation_notifications -> replaceFragment(NotificationsFragment())
             }
             true
         }

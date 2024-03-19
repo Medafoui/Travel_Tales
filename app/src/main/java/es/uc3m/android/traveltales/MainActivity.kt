@@ -23,28 +23,6 @@ class MainActivity : Activity() {
         val intent = Intent(this, Profile::class.java)
         startActivity(intent)
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.home)
-//
-//        // Find the Sign Up button by its ID
-//        findViewById<Button>(R.id.buttonSignUp).setOnClickListener {
-//            // Create an Intent to start SignUpActivity
-//            val intent = Intent(this, SignUpActivity::class.java)
-//            startActivity(intent)
-//
-//        // Find the Login button by its ID
-//        findViewById<Button>(R.id.buttonLogin).setOnClickListener {
-//            // Create an Intent to start LoginActivity
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-
-
-//
-//    }
-//}}}
-
-
     }}
 
 
