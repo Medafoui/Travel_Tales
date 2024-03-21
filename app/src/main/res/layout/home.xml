@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"> <!-- Center content vertically and horizontally -->
@@ -14,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:contentDescription="@string/app_logo"
         android:src="@drawable/app_logo" /> <!-- Center the image -->
 
     <!-- Header -->
@@ -24,7 +23,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Travel Tales"
+        android:text="@string/travel_tales"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -41,14 +40,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="Login" />
+            android:text="@string/login"/>
 
         <Button
             android:id="@+id/buttonSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Sign Up" />
+            android:text="@string/sign_up" />
 
     </LinearLayout>
 

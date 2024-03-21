@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
@@ -34,7 +34,7 @@
                 android:layout_margin="20dp"
                 android:textSize="30sp"
                 android:textColor="@color/black"
-                android:text="Name" />
+                android:text="@string/name" />
 
             <ImageView
                 android:id="@+id/country_icon"
@@ -48,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:baselineAligned="false">
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -60,14 +61,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="20sp"
-                    android:text="0" />
+                    android:text="@string/_0" />
                 <TextView
                     android:id="@+id/countries"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="18sp"
-                    android:text="Countries" />
+                    android:text="@string/countries" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,14 +82,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="20sp"
-                    android:text="0" />
+                    android:text="@string/_0" />
                 <TextView
                     android:id="@+id/followers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="18sp"
-                    android:text="Followers" />
+                    android:text="@string/followers" />
             </LinearLayout>
 
             <LinearLayout
@@ -102,14 +103,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="20sp"
-                    android:text="0" />
+                    android:text="@string/_0" />
                 <TextView
                     android:id="@+id/following"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textSize="18sp"
-                    android:text="Following" />
+                    android:text="@string/following" />
             </LinearLayout>
 
         </LinearLayout>
@@ -131,7 +132,7 @@
                 android:textAllCaps="false"
                 android:background="@drawable/button_style"
                 android:textSize="18sp"
-                android:text="+ Add trip"/>
+                android:text="@string/add_trip"/>
 
             <Button
                 android:id="@+id/btn_stats"
@@ -143,7 +144,7 @@
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 android:background="@drawable/button_style"
-                android:text="📊 Travel stats"/>
+                android:text="@string/travel_stats"/>
 
         </LinearLayout>
 
@@ -156,7 +157,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
-            android:text="My last trip" />
+            android:text="@string/my_last_trip" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -183,6 +184,6 @@
             android:textAllCaps="false"
             android:textSize="18sp"
             android:background="@drawable/button_style"
-            android:text="+ Add a past, current or future trip"/>
+            android:text="@string/add_a_past_current_or_future_trip"/>
     </LinearLayout>
 </FrameLayout>

@@ -10,7 +10,7 @@
         android:id="@+id/tvStatsTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Your Travel Statistics"
+        android:text="@string/your_travel_statistics"
         android:textSize="24sp"
         android:textColor="#000"
         android:textStyle="bold"
