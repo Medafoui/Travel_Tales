@@ -1,5 +1,4 @@
 package es.uc3m.android.traveltales
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
