@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : Activity() {
     // Declare the FirebaseAuth instance
@@ -35,23 +36,37 @@ class LoginActivity : Activity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         val user = auth.currentUser
+                        if (user != null) {
+                                    val db = FirebaseFirestore.getInstance()
+                                    val docRef = db.collection("users").document(user.uid)
+                                    docRef.get()
+                                        .addOnSuccessListener { document ->
+                                            if (document != null) {
+                                                val username = document.getString("username")
+                                                if (username != null) {
+                                                    Log.d("LoginActivity", "Username: $username")
 
-                        // Get the username
-                        val usernameEditText = findViewById<EditText>(R.id.signup_username)
-                        val username = usernameEditText.text.toString()
-                        Log.d("LoginActivity", "Username: $username")
-
-                        // Start Profile activity and pass the username
-                        val intent = Intent(this, Profile::class.java).apply {
-                            putExtra("username", username)
+                                                    // Redirect to Profile activity and pass the username
+                                                    val intent = Intent(this, Profile::class.java)
+                                                    intent.putExtra("username", username) // Pass the username to the Profile activity
+                                                    startActivity(intent)
+                                                    finish() // close LoginActivity
+                                                } else {
+                                                    Log.d("LoginActivity", "No such field 'username'")
+                                                }
+                                            } else {
+                                                Log.d("LoginActivity", "No such document")
+                                            }
+                                        }
+                                        .addOnFailureListener { exception ->
+                                            Log.d("LoginActivity", "get failed with ", exception)
+                                        }
+                                }
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                        startActivity(intent)
-                        finish() // close LoginActivity
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    }
                 }
+            }
         }
-    }
-}

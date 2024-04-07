@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpActivity : Activity() {
     // Declare the FirebaseAuth instance
@@ -40,30 +40,41 @@ class SignUpActivity : Activity() {
                 return@setOnClickListener
             }
 
+            val auth = FirebaseAuth.getInstance()
+            val db = FirebaseFirestore.getInstance()
+
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         val user = auth.currentUser
 
-                        // Show success message
-                        Toast.makeText(this, "Sign up successful.", Toast.LENGTH_SHORT).show()
+                        if (user != null) {
+                            val userData = hashMapOf(
+                                "username" to username,
+                                "email" to email
+                            )
 
-                        // Redirect to Profile activity
-                        val intent = Intent(this, Profile::class.java)
-                        intent.putExtra("username", username) // Pass the username to the Profile activity
-                        startActivity(intent)
-                        finish() // Finish SignUpActivity so user can't go back to it
+                            db.collection("users").document(user.uid)
+                                .set(userData)
+                                .addOnSuccessListener {
+                                    Log.d("SignUpActivity", "User profile created.")
+
+                                    // Show success message
+                                    Toast.makeText(this, "Sign up successful.", Toast.LENGTH_SHORT).show()
+
+                                    // Redirect to Profile activity
+                                    val intent = Intent(this, Profile::class.java)
+                                    intent.putExtra("username", username) // Pass the username to the Profile activity
+                                    startActivity(intent)
+                                    finish() // Finish SignUpActivity so user can't go back to it
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.w("SignUpActivity", "Error creating user profile", e)
+                                }
+                        }
                     } else {
                         // If sign in fails, display a message to the user.
-                        if (task.exception is FirebaseAuthUserCollisionException) {
-                            // Show message to the user that the email is already in use
-                            Toast.makeText(this, "The email address is already in use by another account.", Toast.LENGTH_SHORT).show()
-                        } else {
-                            // Handle other exceptions
-                            Toast.makeText(this, "Sign up failed.", Toast.LENGTH_SHORT).show()
-                        }
+                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
                     }
-                }
-        }
-    }}
+                }}}}
