@@ -1,11 +1,11 @@
 package es.uc3m.android.traveltales
 
+import BaseFragment
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-class ExploreFragment : Fragment() {
+class ExploreFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

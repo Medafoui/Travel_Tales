@@ -23,7 +23,7 @@
     <string name="add_trip">+ Add trip</string>
     <string name="travel_stats">📊 Travel stats</string>
     <string name="my_last_trip">My last trip</string>
-    <string name="add_a_past_current_or_future_trip">+ Add a past, current or future trip</string>
+    <string name="logout">Log out</string>
     <string name="notifications">Notifications</string>
     <string name="my_trips">My Trips</string>
     <string name="trips_of_my_friends">Trips of my friends</string>

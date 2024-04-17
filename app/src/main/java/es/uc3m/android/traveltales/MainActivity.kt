@@ -5,14 +5,19 @@ import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-
 class MainActivity : Activity() {
     // Declare the FirebaseAuth and FirebaseFirestore instances
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
+
+    // Declare isFirstTime and initialize it to true
+    private var isFirstTime = true
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         // Initialize the FirebaseAuth and FirebaseFirestore instances
         auth = FirebaseAuth.getInstance()
@@ -26,9 +31,16 @@ class MainActivity : Activity() {
             startActivity(intent)
             finish() // Finish MainActivity so user can't go back to it
         } else {
-            // No user is signed in, show the login or signup screen
-            setContentView(R.layout.home)
+//            // No user is signed in, show the login or profile screen
+            val intent = Intent(this, Profile::class.java)
+            startActivity(intent)
+
+
+
         }
-    }
+
+
+
+        }
 }
 
