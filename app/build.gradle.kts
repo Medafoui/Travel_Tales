@@ -1,11 +1,10 @@
-import org.gradle.kotlin.dsl.*
-import org.gradle.kotlin.dsl.dependencies
-
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
     id("com.google.gms.google-services")
+
+
 
 }
 
@@ -75,6 +74,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.11.0")
     implementation("androidx.compose.material3:material3-android:1.2.1")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("com.android.support:support-annotations:28.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -91,4 +91,6 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+
 }

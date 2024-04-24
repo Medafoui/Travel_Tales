@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import es.uc3m.android.traveltales.LoginActivity
 
+
+// Base class for all fragments in the app to remember user when switching between fragments
 open class BaseFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -38,6 +38,8 @@
     <string name="select_date_range">Select Date Range</string>
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
+    <string name="click_to_select_start_date">Click to select start date</string>
+    <string name="click_to_select_end_date">Click to select end date</string>
     <string name="upload_photo">UPLOAD PHOTO</string>
     <string name="save">SAVE</string>
     <string name="picture">Picture</string>

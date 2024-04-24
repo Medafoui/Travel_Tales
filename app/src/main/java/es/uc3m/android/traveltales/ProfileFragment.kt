@@ -72,14 +72,7 @@ class ProfileFragment : BaseFragment() {
                 this?.apply()
             }
 
-////             Redirect to MainActivity
-//            val intent = Intent(activity, MainActivity::class.java)
-//            startActivity(intent)
-//            activity?.finish()
-
-            // Replace the current fragment with HomeFragment
-//            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.home, HomeFragment())?.commit()
-            // Redirect to HomeFragment
+        // Redirect to HomeFragment
             val transaction = activity?.supportFragmentManager?.beginTransaction()
             transaction?.replace(R.id.home, HomeFragment())
             transaction?.commit()
