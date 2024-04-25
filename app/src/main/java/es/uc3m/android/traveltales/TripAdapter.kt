@@ -1,21 +1,22 @@
-
+import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import es.uc3m.android.traveltales.R
 
-
-// class is where you define the views that you want to manipulate in each item of your RecyclerView
-class TripAdapter(private val tripList: List<Map<String, Any>>) : RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
+class TripAdapter(var tripList: List<Map<String, Any>>) : RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
 
     class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tripName: TextView = itemView.findViewById(R.id.friend_name)
         val tripDescription: TextView = itemView.findViewById(R.id.friend_trip)
-//        val tripBackground: ImageView = itemView.findViewById(R.id.trip_background)
-
-        // Add other views for tripStartDate and tripEndDate
+        val tripImageView: ImageView = itemView.findViewById(R.id.trip_background) // replace with your ImageView id
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripViewHolder {
@@ -27,16 +28,37 @@ class TripAdapter(private val tripList: List<Map<String, Any>>) : RecyclerView.A
         val currentItem = tripList[position]
         holder.tripName.text = currentItem["tripName"].toString()
         holder.tripDescription.text = currentItem["tripDescription"].toString()
+        val tripImageUri = currentItem["tripImageUri"].toString()
 
-//        // Get the image URL from the currentItem
-//        val imageUrl = currentItem["imageUrl"].toString()
-//
-//        // Use Glide to load the image from the URL
-//        Glide.with(holder.itemView)
-//            .load(imageUrl)
-//            .into(holder.tripBackground)
-//        // Set text for tripStartDate and tripEndDate
+
+        Glide.with(holder.itemView.context)
+            .load(tripImageUri)
+            .listener(object : RequestListener<Drawable> {
+                override fun onLoadFailed(e: GlideException?, model: Any?, target: com.bumptech.glide.request.target.Target<Drawable>?, isFirstResource: Boolean): Boolean {
+                    Log.e("TripAdapter", "Load failed", e)
+                    return false // let Glide handle the rest
+                }
+
+                override fun onResourceReady(resource: Drawable?, model: Any?, target: com.bumptech.glide.request.target.Target<Drawable>?, dataSource: com.bumptech.glide.load.DataSource?, isFirstResource: Boolean): Boolean {
+                    return false // let Glide handle the rest
+                }
+            })
+            .into(holder.tripImageView)
     }
 
     override fun getItemCount() = tripList.size
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

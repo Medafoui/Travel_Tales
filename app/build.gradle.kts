@@ -92,5 +92,5 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.github.bumptech.glide:glide:4.12.0")
-
+    implementation("com.google.firebase:firebase-storage-ktx:19.2.2")
 }
