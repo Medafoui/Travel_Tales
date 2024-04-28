@@ -10,11 +10,37 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+
+        <!-- City -->
+        <EditText
+            android:id="@+id/editTextCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_bg"
+            android:hint="@string/city"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <!-- Country -->
+
+        <EditText
+            android:id="@+id/editTextCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_bg"
+            android:hint="@string/country"
+            android:inputType="text"
+            android:padding="12dp" />
+
+
         <!-- Trip Name -->
         <EditText
             android:id="@+id/editTextTripName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@drawable/edittext_bg"
             android:hint="@string/trip_name"
             android:inputType="text"
@@ -31,6 +57,7 @@
             android:inputType="textMultiLine"
             android:lines="4"
             android:padding="12dp" />
+
 
         <!-- Date Range -->
         <TextView
@@ -108,7 +135,6 @@
             android:text="@string/save"
             android:textColor="@color/white"
             android:padding="12dp" />
-
     </LinearLayout>
 
 </ScrollView>

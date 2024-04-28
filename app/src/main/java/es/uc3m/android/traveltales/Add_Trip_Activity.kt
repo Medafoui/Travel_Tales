@@ -29,6 +29,9 @@ class Add_Trip_Activity: Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_trip)
 
+
+        val tripCity = findViewById<EditText>(R.id.editTextCity)
+        val tripCountry = findViewById<EditText>(R.id.editTextCountry)
         val tripName = findViewById<EditText>(R.id.editTextTripName)
         val tripDescription = findViewById<EditText>(R.id.editTextDescription)
         val tripStartDate = findViewById<EditText>(R.id.editTextStartDate)
@@ -95,6 +98,8 @@ class Add_Trip_Activity: Activity() {
 
                     // Create a new Trip object with keys and values using HashMap
                     val trip = hashMapOf(
+                        "tripCity" to tripCity.text.toString(),
+                        "tripCountry" to tripCountry.text.toString(),
                         "tripName" to tripName.text.toString(),
                         "tripDescription" to tripDescription.text.toString(),
                         "tripStartDate" to tripStartDate.text.toString(),
