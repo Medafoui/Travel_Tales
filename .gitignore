@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+gradle.properties
+**/res/values/api_keys.xml

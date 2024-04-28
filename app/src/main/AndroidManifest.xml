@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_mountain"
@@ -44,8 +45,12 @@
         <activity
             android:name=".StatsActivity"
             android:exported="true"/>
+        <service android:name=".WeatherService" />
+
 
     </application>
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>
