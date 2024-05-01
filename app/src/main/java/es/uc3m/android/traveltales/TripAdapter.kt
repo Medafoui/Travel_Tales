@@ -11,6 +11,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import es.uc3m.android.traveltales.R
 
+// Class that retrieves that provides views for the list of trips contained in MyTripsFragment
 class TripAdapter(var tripList: List<Map<String, Any>>) : RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
 
     class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -48,17 +49,4 @@ class TripAdapter(var tripList: List<Map<String, Any>>) : RecyclerView.Adapter<T
 
     override fun getItemCount() = tripList.size
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

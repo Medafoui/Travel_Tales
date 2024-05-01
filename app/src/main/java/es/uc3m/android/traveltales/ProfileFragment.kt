@@ -56,25 +56,6 @@ class ProfileFragment : BaseFragment() {
         return view
     }
 
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        val view = inflater.inflate(R.layout.fragment_profile, container, false)
-//
-//        // Display the welcome message
-//        Toast.makeText(context, "Welcome, $username!", Toast.LENGTH_SHORT).show()
-//
-//        // Find the TextView by its ID and set the username
-//        val usernameTextView = view.findViewById<TextView>(R.id.name)
-//        Log.d("ProfileFragment", "Username: $username")
-//        usernameTextView.text = username
-//
-//        return view
-//    }
-
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -126,25 +107,44 @@ class ProfileFragment : BaseFragment() {
         }
 
 
+        updateCountriesVisited()
 
         loadMostRecentTripImage()
+    }
+
+    private fun updateCountriesVisited() {
+        val db = FirebaseFirestore.getInstance()
+        val auth = FirebaseAuth.getInstance()
+
+        db.collection("trips")
+            .whereEqualTo("userId", auth.currentUser?.uid)  // Filter by the user's ID
+            .get()
+            .addOnSuccessListener { result ->
+                val tripList = result.map { it.data }
+                val countriesVisited = tripList.mapNotNull { it["tripCountry"] as? String }.distinct().size
+
+                // Find the TextView by its ID and update the number of countries visited
+                val countriesVisitedTextView = view?.findViewById<TextView>(R.id.countries_num)
+                countriesVisitedTextView?.text = countriesVisited.toString()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(context, "Error getting trips: $e", Toast.LENGTH_SHORT).show()
+            }
     }
 
 
     private fun loadMostRecentTripImage() {
         val db = FirebaseFirestore.getInstance()
 
-        val currentDate = Calendar.getInstance().time
-        val currentTimestamp = com.google.firebase.Timestamp(currentDate)
-
         db.collection("trips")
+            .whereEqualTo("userId", FirebaseAuth.getInstance().currentUser?.uid)
             .get()
             .addOnSuccessListener { result ->
                 val trips = result.documents.mapNotNull { document ->
                     val tripStartDateString = document.getString("tripStartDate")
                     val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                     val tripStartDate = simpleDateFormat.parse(tripStartDateString)
-                    if (tripStartDate != null && !tripStartDate.after(currentDate)) {
+                    if (tripStartDate != null && !tripStartDate.after(Calendar.getInstance().time)) {
                         Pair(com.google.firebase.Timestamp(tripStartDate), document.getString("tripImageUri"))
                     } else {
                         null
@@ -152,11 +152,16 @@ class ProfileFragment : BaseFragment() {
                 }
                 val mostRecentTrip = trips.maxByOrNull { it.first }
                 val tripImageUri = mostRecentTrip?.second
-                if (tripImageUri != null) {
-                    val imageView = view?.findViewById<ImageView>(R.id.iv_last_trip)
-                    if (imageView != null) {
+                val imageView = view?.findViewById<ImageView>(R.id.iv_last_trip)
+                if (imageView != null) {
+                    if (tripImageUri != null) {
                         Glide.with(this)
                             .load(tripImageUri)
+                            .into(imageView)
+                    } else {
+                        // Load the default image when the user has no trips
+                        Glide.with(this)
+                            .load(R.mipmap.ic_spain_foreground)  // Replace with your default image resource
                             .into(imageView)
                     }
                 }
@@ -165,6 +170,7 @@ class ProfileFragment : BaseFragment() {
                 Toast.makeText(context, "Error getting trips: $e", Toast.LENGTH_SHORT).show()
             }
     }
+
     companion object {
         fun newInstance(username: String) = ProfileFragment().apply {
             arguments = Bundle().apply {

@@ -80,19 +80,3 @@ class Profile : AppCompatActivity() {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

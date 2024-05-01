@@ -12,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -39,7 +40,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         tripAdapter = TripAdapter(emptyList())
         tripCityList = ArrayList()
         tripCountryList = ArrayList()
+
+        val auth = FirebaseAuth.getInstance()
+
         FirebaseFirestore.getInstance().collection("trips")
+            .whereEqualTo("userId", auth.currentUser?.uid)  // Filter by the user's ID
             .get()
             .addOnSuccessListener { result ->
                 val tripList = result.map { it.data }

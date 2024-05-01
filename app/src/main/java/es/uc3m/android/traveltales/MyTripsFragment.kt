@@ -5,9 +5,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import es.uc3m.android.traveltales.R
 
+
+// Class that fetches the trips from Firestore given a userid and displays them in a RecyclerView
 class MyTripsFragment : BaseFragment() {
 
     private lateinit var tripAdapter: TripAdapter
@@ -25,7 +28,11 @@ class MyTripsFragment : BaseFragment() {
         tripAdapter = TripAdapter(emptyList())
         recyclerViewTrips.adapter = tripAdapter
 
+        val auth = FirebaseAuth.getInstance()
+
+
         FirebaseFirestore.getInstance().collection("trips")
+            .whereEqualTo("userId", auth.currentUser?.uid)  // Filter by the user's ID
             .get()
             .addOnSuccessListener { result ->
                 val tripList = result.map { it.data }

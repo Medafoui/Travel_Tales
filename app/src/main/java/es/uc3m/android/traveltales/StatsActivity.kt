@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 
@@ -17,6 +18,8 @@ class StatsActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stats)
 
+
+
         tvCountriesVisited = findViewById(R.id.tv_countries_visited)
         tvAverageTripDuration = findViewById(R.id.tv_average_trip_duration)
         tvLongestTrip = findViewById(R.id.tv_longest_trip)
@@ -27,8 +30,11 @@ class StatsActivity : Activity() {
 
     private fun loadStats() {
         val db = FirebaseFirestore.getInstance()
+        val auth = FirebaseAuth.getInstance()
+
 
         db.collection("trips")
+            .whereEqualTo("userId", auth.currentUser?.uid)  // Filter by the user's ID
             .get()
             .addOnSuccessListener { result ->
                 val tripList = result.map { it.data }
@@ -73,76 +79,3 @@ class StatsActivity : Activity() {
             }
     }
 }
-
-
-
-//
-//
-//package es.uc3m.android.traveltales
-//
-//import android.app.Activity
-//import android.os.Bundle
-//import android.widget.TextView
-//import android.widget.Toast
-//import com.google.firebase.firestore.FirebaseFirestore
-//
-//class StatsActivity : Activity() {
-//    private lateinit var tvCountriesVisited: TextView
-//    private lateinit var tvContinentsVisited: TextView
-//    private lateinit var tvTripsDone: TextView
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_stats)
-//
-//        tvCountriesVisited = findViewById(R.id.tv_countries_visited)
-//        tvTripsDone = findViewById(R.id.tv_trips_done)
-//
-//        loadStats()
-//    }
-//
-//    private fun loadStats() {
-//        val db = FirebaseFirestore.getInstance()
-//
-//        db.collection("trips")
-//            .get()
-//            .addOnSuccessListener { result ->
-//                val tripList = result.map { it.data }
-//
-//                val countriesVisited = tripList.mapNotNull { it["tripCountry"] as? String }.distinct().size
-//                val tripsDone = tripList.size
-//
-//                tvCountriesVisited.text = getString(R.string.countries_visited, countriesVisited)
-//                tvTripsDone.text = getString(R.string.trips_done, tripsDone)
-//            }
-//            .addOnFailureListener { e ->
-//                Toast.makeText(this, "Error getting trips: $e", Toast.LENGTH_SHORT).show()
-//            }
-//    }
-//}
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
