@@ -43,4 +43,7 @@
     <string name="upload_photo">UPLOAD PHOTO</string>
     <string name="save">SAVE</string>
     <string name="picture">Picture</string>
+    <string name="average_trip_duration">Average Trip Duration: %d days</string>
+    <string name="longest_trip">Longest Trip: %d days</string>
+
 </resources>

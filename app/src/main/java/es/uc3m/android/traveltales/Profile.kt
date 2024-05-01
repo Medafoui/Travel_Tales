@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import es.uc3m.android.traveltales.databinding.ActivityProfileBinding
 
 class Profile : AppCompatActivity() {
-    private lateinit var binding: ActivityProfileBinding
+    lateinit var binding: ActivityProfileBinding
     // Declare the FirebaseAuth and FirebaseFirestore instances
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
@@ -36,12 +36,18 @@ class Profile : AppCompatActivity() {
         }
     }
 
+
+
     override fun onResume() {
         super.onResume()
 
         // Fetch the user's data
         val currentUser = auth.currentUser
         if (currentUser != null) {
+
+            // Enable the bottom navigation view
+            binding.bottomNav.isEnabled = true
+
             val docRef = db.collection("users").document(currentUser.uid)
             docRef.get()
                 .addOnSuccessListener { document ->
