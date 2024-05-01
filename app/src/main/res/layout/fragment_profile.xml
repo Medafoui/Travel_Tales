@@ -36,12 +36,6 @@
                 android:textColor="@color/black"
                 android:text="@string/name" />
 
-            <ImageView
-                android:id="@+id/country_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/app_logo" />
         </LinearLayout>
 
         <LinearLayout
@@ -168,6 +162,7 @@
             app:cardCornerRadius="20dp">
 
             <ImageView
+                android:id="@+id/iv_last_trip"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -175,20 +170,41 @@
 
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:elevation="10dp"
-            android:textAllCaps="false"
-            android:textSize="18sp"
-            android:background="@drawable/button_style"
-            android:text="@string/logout"
-            android:padding="16dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_map"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:elevation="10dp"
+                android:textAllCaps="false"
+                android:background="@drawable/button_style"
+                android:textSize="18sp"
+                android:text="Map with my trips"/>
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:elevation="10dp"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:background="@drawable/button_style"
+                android:text="@string/logout"/>
+
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>
+
+
+
+

@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 class ProfileFragment : BaseFragment() {
     private var username: String? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,8 +41,14 @@ class ProfileFragment : BaseFragment() {
         Log.d("ProfileFragment", "Username: $username")
         usernameTextView.text = username
 
+
+
+
         return view
     }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,6 +66,18 @@ class ProfileFragment : BaseFragment() {
             val intent = Intent(activity, StatsActivity::class.java)
             startActivity(intent)
         }
+
+
+        // Find the map button by its ID and set a click listener
+        view.findViewById<Button>(R.id.btn_map).setOnClickListener {
+            // Start MapsActivity when the button is clicked
+            val intent = Intent(activity, MapsActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+
 
         // Find the logout button by its ID and set a click listener
         view.findViewById<Button>(R.id.btn_logout).setOnClickListener {

@@ -23,7 +23,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        buildConfigField("String", "OPEN_WEATHER_MAP_API_KEY", "\"${property("OpenWeatherMapApiKey")}\"")
+//        buildConfigField("String", "OPEN_WEATHER_MAP_API_KEY", "\"${property("OpenWeatherMapApiKey")}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -77,6 +77,7 @@ dependencies {
     implementation("androidx.compose.material3:material3-android:1.2.1")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("com.android.support:support-annotations:28.0.0")
+    implementation("com.google.android.ads:mediation-test-suite:3.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -97,5 +98,8 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx:19.2.2")
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+
+
 
 }

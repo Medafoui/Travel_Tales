@@ -10,6 +10,19 @@
         android:roundIcon="@mipmap/ic_mountain_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelTales">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBJzLAuPo1xIf4pVbCG6tjLq0xp7vIoGNo" />
+
+
+        <!-- Dummy AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+
+
         <activity
             android:name=".Explore"
             android:exported="true"
@@ -46,7 +59,10 @@
             android:name=".StatsActivity"
             android:exported="true"/>
         <service android:name=".WeatherService" />
-
+        <activity
+            android:name=".MapsActivity"
+            android:theme="@style/BottomMenuTheme"
+            android:exported="true" />
 
     </application>
 
