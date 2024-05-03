@@ -63,7 +63,7 @@ class ProfileFragment : BaseFragment() {
         // Find the add trip button by its ID and set a click listener
         view.findViewById<Button>(R.id.btn_add).setOnClickListener {
             // Start Add_Trip_Activity when the button is clicked
-            val intent = Intent(activity, Add_Trip_Activity::class.java)
+            val intent = Intent(activity, AddTripActivity::class.java)
             startActivity(intent)
         }
 

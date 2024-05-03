@@ -51,17 +51,12 @@ class LoginActivity : Activity() {
                                         if (username != null) {
                                             Log.d("LoginActivity", "Username: $username")
 
-
-
                                             // Store the username in SharedPreferences
                                             val sharedPref = getSharedPreferences("MyPref", android.content.Context.MODE_PRIVATE)
                                             with (sharedPref.edit()) {
                                                 putString("username", username)
                                                 apply()
                                             }
-
-
-
 
                                             // Redirect to Profile activity and pass the username
                                             val intent = Intent(this, Profile::class.java)

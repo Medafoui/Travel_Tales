@@ -14,8 +14,8 @@
         android:icon="@drawable/airplane_24" />
     <item
         android:id="@+id/navigation_notifications"
-        android:title="Notifications"
-        android:icon="@drawable/bell_outline" />
+        android:title="People"
+        android:icon="@drawable/people_outline_24" />
     <item
         android:id="@+id/navigation_explore"
         android:title="Explore"

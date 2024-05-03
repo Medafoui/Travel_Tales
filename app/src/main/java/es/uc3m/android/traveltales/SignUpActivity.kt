@@ -48,11 +48,13 @@ class SignUpActivity : Activity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         val user = auth.currentUser
+                        val friendsList = mutableListOf<String>()
 
                         if (user != null) {
                             val userData = hashMapOf(
                                 "username" to username,
-                                "email" to email
+                                "email" to email,
+                                "friends" to friendsList
                             )
 
                             db.collection("users").document(user.uid)
@@ -77,4 +79,7 @@ class SignUpActivity : Activity() {
                         // If sign in fails, display a message to the user.
                         Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
                     }
-                }}}}
+                }
+        }
+    }
+}

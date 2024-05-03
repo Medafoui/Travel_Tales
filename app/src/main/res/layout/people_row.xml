@@ -9,7 +9,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:shape="ring"
-            android:id="@+id/profile_image"
+            android:id="@+id/friend_profile_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
@@ -18,13 +18,13 @@
             android:src="@drawable/account_circle_24" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/friend_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:maxLines="3"
-            android:text="@string/noti_message" />
+            android:text="Juan" />
 
 </LinearLayout>

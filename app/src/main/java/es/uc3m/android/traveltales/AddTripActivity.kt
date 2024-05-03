@@ -30,7 +30,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.util.Calendar
 
-class Add_Trip_Activity: Activity() {
+class AddTripActivity: Activity() {
 
     companion object {
         private const val PICK_IMAGE_REQUEST = 1
@@ -142,9 +142,9 @@ class Add_Trip_Activity: Activity() {
                             // Fetch weather data and display notification
                             CoroutineScope(Dispatchers.IO).launch {
                                 val city = tripCity.text.toString()
-                                val (weather, temperature) = fetchWeatherData(this@Add_Trip_Activity,client, city)
+                                val (weather, temperature) = fetchWeatherData(this@AddTripActivity,client, city)
                                 withContext(Dispatchers.Main) {
-                                    displayWeatherNotification(this@Add_Trip_Activity,city, weather, temperature)
+                                    displayWeatherNotification(this@AddTripActivity,city, weather, temperature)
                                 }
                             }
                         }
