@@ -29,13 +29,14 @@ class PeopleFragment : BaseFragment() {
                 val intent = Intent(activity, PeopleProfileActivity::class.java)
                 intent.putExtra("username",peopleAdapter.peopleList[position].username)
                 intent.putExtra("email",peopleAdapter.peopleList[position].email)
+                intent.putExtra("userId",peopleAdapter.peopleList[position].userId)
                 startActivity(intent)
             }
         })
         //peopleAdapter = PeopleAdapter(emptyList())
         recyclerViewPeople.adapter = peopleAdapter
 
-        val currentEmail = FirebaseAuth.getInstance().currentUser?.email
+        val currentid = FirebaseAuth.getInstance().currentUser?.uid
 
         FirebaseFirestore.getInstance().collection("users")
             .get()
@@ -45,9 +46,10 @@ class PeopleFragment : BaseFragment() {
                 for (document in result) {
                     val email = document.getString("email")
                     val username = document.getString("username")
+                    val userId = document.id
 
-                    if (email != null && email != currentEmail && username != null) {
-                        peopleList.add(Person(username, email))
+                    if (email != null && userId != currentid && username != null) {
+                        peopleList.add(Person(username, email, userId.toString()))
                     }
                 }
 

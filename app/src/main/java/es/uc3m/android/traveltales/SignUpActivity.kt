@@ -48,13 +48,14 @@ class SignUpActivity : Activity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         val user = auth.currentUser
-                        val friendsList = mutableListOf<String>()
+                        val emptyList = mutableListOf<String>()
 
                         if (user != null) {
                             val userData = hashMapOf(
                                 "username" to username,
                                 "email" to email,
-                                "friends" to friendsList
+                                "followers" to emptyList,
+                                "following" to emptyList
                             )
 
                             db.collection("users").document(user.uid)
