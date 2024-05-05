@@ -15,49 +15,49 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.widget.SearchView
-                android:theme="@style/Theme.Search"
-                android:id="@+id/searchView"
-                android:layout_width="match_parent"
-                android:layout_margin="15dp"
-                android:background="@drawable/search_bg"
-                android:layout_height="wrap_content"
-                android:iconifiedByDefault="false"
-                android:queryHint="Search" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/trips_of_my_friends"
+                android:text="Following"
                 android:layout_gravity="center_vertical"
-                android:textSize="25sp"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/black"
                 android:layout_marginStart="20dp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_friends_trip"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:itemCount="1"
-                tools:listitem="@layout/friends_trip" />
+                android:scrollbars="none">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/people_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    tools:listitem="@layout/people_row" />
+            </ScrollView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/my_friends"
+                android:text="Trips of following"
                 android:layout_gravity="center_vertical"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/friends_list"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                tools:listitem="@layout/friend_row" />
+                android:scrollbars="none">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/friends_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    tools:listitem="@layout/friends_trip" />
+            </ScrollView>
 
         </LinearLayout>
     </ScrollView>

@@ -1,6 +1,5 @@
 package es.uc3m.android.traveltales
 
-import BaseFragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater

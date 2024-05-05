@@ -1,3 +1,5 @@
+package es.uc3m.android.traveltales
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import es.uc3m.android.traveltales.R
-
 
 // Class that fetches the trips from Firestore given a userid and displays them in a RecyclerView
 class MyTripsFragment : BaseFragment() {

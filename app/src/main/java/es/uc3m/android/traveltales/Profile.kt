@@ -1,6 +1,5 @@
 package es.uc3m.android.traveltales
 
-import MyTripsFragment
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity

@@ -12,29 +12,27 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 
-// Class that retrieves that provides views for the list of trips contained in MyTripsFragment
-class TripAdapter(var tripList: List<Map<String, Any>>) : RecyclerView.Adapter<TripAdapter.TripViewHolder>() {
+class FriendTripAdapter(var tripList: List<FriendTrip>) : RecyclerView.Adapter<FriendTripAdapter.FriendTripViewHolder>() {
 
-    class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tripName: TextView = itemView.findViewById(R.id.friend_name)
-        val tripDescription: TextView = itemView.findViewById(R.id.friend_trip)
-        val tripImageView: ImageView = itemView.findViewById(R.id.trip_background) // replace with your ImageView id
+    class FriendTripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val friendName: TextView = itemView.findViewById(R.id.friend_name)
+        val friendTrip: TextView = itemView.findViewById(R.id.friend_trip)
+        val tripImageView: ImageView = itemView.findViewById(R.id.trip_background)
+
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.my_trip, parent, false)
-        return TripViewHolder(itemView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendTripViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.friends_trip, parent, false)
+        return FriendTripViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FriendTripViewHolder, position: Int) {
         val currentItem = tripList[position]
-        holder.tripName.text = currentItem["tripName"].toString()
-        holder.tripDescription.text = currentItem["tripDescription"].toString()
-        val tripImageUri = currentItem["tripImageUri"].toString()
-
+        holder.friendName.text = currentItem.username
+        holder.friendTrip.text = currentItem.tripName
 
         Glide.with(holder.itemView.context)
-            .load(tripImageUri)
+            .load(currentItem.tripImageUri)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(e: GlideException?, model: Any?, target: com.bumptech.glide.request.target.Target<Drawable>?, isFirstResource: Boolean): Boolean {
                     Log.e("TripAdapter", "Load failed", e)

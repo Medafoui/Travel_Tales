@@ -1,6 +1,5 @@
 package es.uc3m.android.traveltales
 
-import TripAdapter
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast

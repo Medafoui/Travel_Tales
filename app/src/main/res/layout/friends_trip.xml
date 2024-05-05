@@ -13,8 +13,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/ic_spain_foreground">
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/trip_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_spain_foreground" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="match_parent"
@@ -31,7 +37,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="10dp"
                 android:shape="ring"
-                android:src="@drawable/app_logo"/>
+                android:src="@drawable/account_circle_24_white"/>
             <TextView
                 android:id="@+id/friend_name"
                 android:layout_width="match_parent"

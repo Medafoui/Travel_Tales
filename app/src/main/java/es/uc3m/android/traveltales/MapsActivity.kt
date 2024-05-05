@@ -1,6 +1,5 @@
 package es.uc3m.android.traveltales
 
-import TripAdapter
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
