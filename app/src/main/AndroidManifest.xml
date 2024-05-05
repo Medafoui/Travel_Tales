@@ -26,10 +26,6 @@
             android:exported="true"
             android:theme="@style/BottomMenuTheme" />
         <activity
-            android:name=".Explore"
-            android:exported="true"
-            android:theme="@style/BottomMenuTheme" />
-        <activity
             android:name=".activity.ProfileActivity"
             android:exported="true"
             android:theme="@style/BottomMenuTheme" />
