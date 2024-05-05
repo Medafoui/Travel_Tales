@@ -180,7 +180,7 @@
             android:textColor="@color/black"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="20dp"
-            android:text="No previous trip" />
+            android:text="@string/no_previous_trip" />
 
         <LinearLayout
             android:layout_width="match_parent"

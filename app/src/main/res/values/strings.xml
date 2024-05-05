@@ -55,5 +55,6 @@
     <string name="people">People</string>
     <string name="map_with_my_trips">Map with my trips</string>
     <string name="juan">Juan</string>
+    <string name="no_previous_trip">No previous trip</string>
 
 </resources>
