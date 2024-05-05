@@ -43,7 +43,7 @@ class ProfileFragment : BaseFragment() {
         val view = binding.root
 
         // Find the TextView by its ID
-        val usernameTextView = view.findViewById<TextView>(R.id.name)
+        val usernameTextView = binding.name
 
         if (username == null) {
             // User is not logged in, display a message asking the user to log in
@@ -150,6 +150,13 @@ class ProfileFragment : BaseFragment() {
             .whereEqualTo("userId", FirebaseAuth.getInstance().currentUser?.uid)
             .get()
             .addOnSuccessListener { result ->
+                if(result.documents.isEmpty()){
+                    binding.lastTripCv.visibility = View.GONE
+                    binding.lastTripText.visibility = View.VISIBLE
+                } else {
+                    binding.lastTripCv.visibility = View.VISIBLE
+                    binding.lastTripText.visibility = View.GONE
+                }
                 val trips = result.documents.mapNotNull { document ->
                     val tripStartDateString = document.getString("tripStartDate")
                     val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -162,7 +169,7 @@ class ProfileFragment : BaseFragment() {
                 }
                 val mostRecentTrip = trips.maxByOrNull { it.first }
                 val tripImageUri = mostRecentTrip?.second
-                val imageView = view?.findViewById<ImageView>(R.id.iv_last_trip)
+                val imageView = binding.ivLastTrip
                 if (imageView != null) {
                     if (tripImageUri != null) {
                         Glide.with(this)

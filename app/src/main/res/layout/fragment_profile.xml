@@ -154,6 +154,7 @@
             android:text="@string/my_last_trip" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/last_trip_cv"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginLeft="20dp"
@@ -162,13 +163,24 @@
             app:cardCornerRadius="20dp">
 
             <ImageView
-                android:id="@+id/iv_last_trip"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"/>
-                <!--android:src="@mipmap/ic_spain_foreground"-->
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_spain_foreground"
+                android:id="@+id/iv_last_trip"/>
 
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/last_trip_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:text="No previous trip" />
 
         <LinearLayout
             android:layout_width="match_parent"

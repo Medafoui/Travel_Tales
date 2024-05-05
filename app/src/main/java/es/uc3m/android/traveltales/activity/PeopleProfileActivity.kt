@@ -69,12 +69,12 @@ class PeopleProfileActivity : AppCompatActivity() {
                             document.get("following") as? List<String> ?: emptyList()
 
                         if (followingList.contains(person.userId)) {
-                            val updatedFollowing = followingList - person.userId.toString()
+                            val updatedFollowing = followingList - person.userId
                             updateList(currentUserId, updatedFollowing, "following")
                             updateFollowersList(updatedFollowing)
                             binding.btnFollow.text = "Follow"
                         } else {
-                            val updatedFollowing = followingList + person.userId.toString()
+                            val updatedFollowing = followingList + person.userId
                             updateList(currentUserId, updatedFollowing, "following")
                             updateFollowersList(updatedFollowing)
                             binding.btnFollow.text = "Unfollow"
