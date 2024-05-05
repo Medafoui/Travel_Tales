@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".PeopleFragment">
+    tools:context=".fragment.PeopleFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginBottom="5dp"
-            android:text="People" />
+            android:text="@string/people" />
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,5 +34,4 @@
         </ScrollView>
 
     </LinearLayout>
-
 </FrameLayout>

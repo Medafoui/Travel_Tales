@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.adapter
 
 import android.graphics.drawable.Drawable
 import android.util.Log
@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import es.uc3m.android.traveltales.R
+import es.uc3m.android.traveltales.data.FriendTripData
 
-class FriendTripAdapter(var tripList: List<FriendTrip>) : RecyclerView.Adapter<FriendTripAdapter.FriendTripViewHolder>() {
+class FriendTripAdapter(var tripList: List<FriendTripData>) : RecyclerView.Adapter<FriendTripAdapter.FriendTripViewHolder>() {
 
     class FriendTripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val friendName: TextView = itemView.findViewById(R.id.friend_name)
         val friendTrip: TextView = itemView.findViewById(R.id.friend_trip)
         val tripImageView: ImageView = itemView.findViewById(R.id.trip_background)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendTripViewHolder {

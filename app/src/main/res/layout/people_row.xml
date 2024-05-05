@@ -25,6 +25,5 @@
             android:textSize="20sp"
             android:textColor="@color/black"
             android:maxLines="3"
-            android:text="Juan" />
-
+            android:text="@string/juan" />
 </LinearLayout>

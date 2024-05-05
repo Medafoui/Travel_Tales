@@ -1,9 +1,10 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.fragment
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import es.uc3m.android.traveltales.activity.LoginActivity
 
 // Base class for all fragments in the app to remember user when switching between fragments
 open class BaseFragment : Fragment() {

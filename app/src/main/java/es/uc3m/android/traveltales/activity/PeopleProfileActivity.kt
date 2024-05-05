@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import es.uc3m.android.traveltales.R
+import es.uc3m.android.traveltales.adapter.TripAdapter
+import es.uc3m.android.traveltales.data.PersonData
 import es.uc3m.android.traveltales.databinding.ActivityPeopleProfileBinding
 
 class PeopleProfileActivity : AppCompatActivity() {
@@ -16,7 +19,7 @@ class PeopleProfileActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var adapter: TripAdapter
-    private lateinit var person: Person
+    private lateinit var person: PersonData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +30,7 @@ class PeopleProfileActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        person = Person(
+        person = PersonData(
             intent.getStringExtra("username").toString(),
             intent.getStringExtra("email").toString(),
             intent.getStringExtra("userId").toString()
@@ -132,7 +135,6 @@ class PeopleProfileActivity : AppCompatActivity() {
         db.collection("users").document(id)
             .update(field, updatedList)
             .addOnSuccessListener {
-                //Toast.makeText(this, "Following list updated successfully", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error updating following list: $e", Toast.LENGTH_SHORT).show()

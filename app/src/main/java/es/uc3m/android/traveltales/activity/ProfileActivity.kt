@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -6,9 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import es.uc3m.android.traveltales.fragment.ExploreFragment
+import es.uc3m.android.traveltales.fragment.HomeFragment
+import es.uc3m.android.traveltales.fragment.MyTripsFragment
+import es.uc3m.android.traveltales.fragment.PeopleFragment
+import es.uc3m.android.traveltales.fragment.ProfileFragment
+import es.uc3m.android.traveltales.R
 import es.uc3m.android.traveltales.databinding.ActivityProfileBinding
 
-class Profile : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
     lateinit var binding: ActivityProfileBinding
     // Declare the FirebaseAuth and FirebaseFirestore instances
     private lateinit var auth: FirebaseAuth
@@ -34,9 +40,6 @@ class Profile : AppCompatActivity() {
             true
         }
     }
-
-
-
     override fun onResume() {
         super.onResume()
 
@@ -78,4 +81,3 @@ class Profile : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 }
-

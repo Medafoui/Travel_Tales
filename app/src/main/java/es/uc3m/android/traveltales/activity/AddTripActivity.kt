@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.activity
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -22,6 +22,8 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
 import com.google.gson.Gson
+import es.uc3m.android.traveltales.R
+import es.uc3m.android.traveltales.data.WeatherData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,7 +33,6 @@ import okhttp3.Request
 import java.util.Calendar
 
 class AddTripActivity: Activity() {
-
     companion object {
         private const val PICK_IMAGE_REQUEST = 1
     }
@@ -46,7 +47,6 @@ class AddTripActivity: Activity() {
         // Initialize Firebase Auth
         var auth = FirebaseAuth.getInstance()
 
-
         val tripCity = findViewById<EditText>(R.id.editTextCity)
         val tripCountry = findViewById<EditText>(R.id.editTextCountry)
         val tripName = findViewById<EditText>(R.id.editTextTripName)
@@ -54,7 +54,6 @@ class AddTripActivity: Activity() {
         val tripStartDate = findViewById<EditText>(R.id.editTextStartDate)
         val tripEndDate = findViewById<EditText>(R.id.editTextEndDate)
         val imageViewPhoto = findViewById<ImageView>(R.id.imageViewPhoto)
-
 
         // Set up DatePickerDialog for start date
         tripStartDate.setOnClickListener {
@@ -85,7 +84,6 @@ class AddTripActivity: Activity() {
             )
             datePickerDialog.show()
         }
-
 
         // Handle photo upload
         val buttonUploadPhoto = findViewById<Button>(R.id.buttonUploadPhoto)
@@ -125,7 +123,6 @@ class AddTripActivity: Activity() {
                         "tripEndDate" to tripEndDate.text.toString(),
                         "tripImageUri" to downloadUri.toString(), // save the download URL
                         "userId" to auth.currentUser?.uid  // Add the user's ID to the trip
-
                     )
 
                     // Get an instance of FirebaseFirestore
@@ -136,8 +133,6 @@ class AddTripActivity: Activity() {
                         .add(trip)
                         .addOnSuccessListener { documentReference ->
                             Toast.makeText(this, "Trip succesfully saved!", Toast.LENGTH_SHORT).show()
-
-
 
                             // Fetch weather data and display notification
                             CoroutineScope(Dispatchers.IO).launch {
@@ -153,33 +148,32 @@ class AddTripActivity: Activity() {
                         }
                 }
             }
-
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            super.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
 
-            if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
-                selectedImageUri = data.data
-                val imageViewPhoto = findViewById<ImageView>(R.id.imageViewPhoto)
-                imageViewPhoto.setImageURI(selectedImageUri)
-            }
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
+            selectedImageUri = data.data
+            val imageViewPhoto = findViewById<ImageView>(R.id.imageViewPhoto)
+            imageViewPhoto.setImageURI(selectedImageUri)
         }
     }
+}
 
 
-    suspend fun fetchWeatherData(context:Context, client: OkHttpClient, city: String): Pair<String, Double> {
-        val open_weather_map_api_key = context.getString(R.string.open_weather_map_api_key)
-        val url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=${open_weather_map_api_key}"
-        val request = Request.Builder().url(url).build()
-        val response = client.newCall(request).execute()
-        val responseBody = response.body?.string()
-        val weatherData = Gson().fromJson(responseBody, WeatherData::class.java)
-        val weatherDescription = weatherData.weather[0].description
-        val temperature = weatherData.main.temp
-        return Pair(weatherDescription, temperature)
-    }
+suspend fun fetchWeatherData(context:Context, client: OkHttpClient, city: String): Pair<String, Double> {
+    val open_weather_map_api_key = context.getString(R.string.open_weather_map_api_key)
+    val url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=${open_weather_map_api_key}"
+    val request = Request.Builder().url(url).build()
+    val response = client.newCall(request).execute()
+    val responseBody = response.body?.string()
+    val weatherData = Gson().fromJson(responseBody, WeatherData::class.java)
+    val weatherDescription = weatherData.weather[0].description
+    val temperature = weatherData.main.temp
+    return Pair(weatherDescription, temperature)
+}
 
 fun displayWeatherNotification(context: Context, city: String, weather: String, temperature: Double) {
     val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -200,5 +194,3 @@ fun displayWeatherNotification(context: Context, city: String, weather: String, 
         .build()
     notificationManager.notify(0, notification)
 }
-
-

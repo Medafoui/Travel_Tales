@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -11,6 +11,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import es.uc3m.android.traveltales.R
 
 class SignUpActivity : Activity() {
     // Declare the FirebaseAuth instance
@@ -67,7 +68,7 @@ class SignUpActivity : Activity() {
                                     Toast.makeText(this, "Sign up successful.", Toast.LENGTH_SHORT).show()
 
                                     // Redirect to Profile activity
-                                    val intent = Intent(this, Profile::class.java)
+                                    val intent = Intent(this, ProfileActivity::class.java)
                                     intent.putExtra("username", username) // Pass the username to the Profile activity
                                     startActivity(intent)
                                     finish() // Finish SignUpActivity so user can't go back to it

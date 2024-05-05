@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.data
 
 data class WeatherData(
     val weather: List<Weather>,

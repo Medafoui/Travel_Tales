@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import es.uc3m.android.traveltales.R
+import es.uc3m.android.traveltales.activity.PeopleProfileActivity
+import es.uc3m.android.traveltales.adapter.FriendTripAdapter
+import es.uc3m.android.traveltales.adapter.PeopleAdapter
+import es.uc3m.android.traveltales.data.FriendTripData
+import es.uc3m.android.traveltales.data.PersonData
 
 class ExploreFragment:  BaseFragment() {
     private lateinit var peopleAdapter: PeopleAdapter
@@ -44,9 +50,9 @@ class ExploreFragment:  BaseFragment() {
         val currentid = FirebaseAuth.getInstance().currentUser?.uid
         val db = FirebaseFirestore.getInstance()
 
-        val userList = mutableListOf<Person>()
-        val friendList = mutableListOf<Person>()
-        val tripList = mutableListOf<FriendTrip>()
+        val userList = mutableListOf<PersonData>()
+        val friendList = mutableListOf<PersonData>()
+        val tripList = mutableListOf<FriendTripData>()
 
         db.collection("users")
             .get()
@@ -55,7 +61,7 @@ class ExploreFragment:  BaseFragment() {
                     val email = r.getString("email").toString()
                     val username = r.getString("username").toString()
                     val userId = r.id
-                    userList.add(Person(username, email, userId))
+                    userList.add(PersonData(username, email, userId))
                 }
 
                 db.collection("users")
@@ -82,14 +88,14 @@ class ExploreFragment:  BaseFragment() {
                                 .addOnSuccessListener { result ->
                                     val resultList = result.map { it.data }
                                     for (r in resultList) {
-                                        tripList.add(FriendTrip(friend.username, friend.userId,r["tripName"].toString(), r["tripImageUri"].toString()))
+                                        tripList.add(FriendTripData(friend.username, friend.userId,r["tripName"].toString(), r["tripImageUri"].toString()))
                                     }
                                     friendTripAdapter.tripList = tripList
                                     friendTripAdapter.notifyDataSetChanged()
 
                                 }
                                 .addOnFailureListener { e ->
-                                    Toast.makeText(context, "Error getting trips: $e", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context, "Error getting trips list: $e", Toast.LENGTH_SHORT).show()
                                 }
                         }
                     }

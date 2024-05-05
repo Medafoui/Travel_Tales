@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".StatsActivity">
+        tools:context=".activity.StatsActivity">
 
         <TextView
             android:id="@+id/tvStatsTitle"
@@ -36,7 +36,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tvStatsTitle"
-            tools:text="Countries Visited: 24" />
+            tools:text="@string/countries_visited_24" />
 
         <TextView
             android:id="@+id/tv_average_trip_duration"
@@ -50,7 +50,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tv_countries_visited"
-            tools:text="Average Trip Duration: 7 days" />
+            tools:text="@string/average_trip_duration_7_days" />
 
         <TextView
             android:id="@+id/tv_longest_trip"
@@ -64,7 +64,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tv_average_trip_duration"
-            tools:text="Longest Trip: 14 days" />
+            tools:text="@string/longest_trip_14_days" />
 
         <TextView
             android:id="@+id/tv_trips_done"
@@ -78,7 +78,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tv_longest_trip"
-            tools:text="Trips Completed: 40" />
+            tools:text="@string/trips_completed_40" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

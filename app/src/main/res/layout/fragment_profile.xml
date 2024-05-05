@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProfileFragment">
+    tools:context=".fragment.ProfileFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -187,7 +187,7 @@
                 android:textAllCaps="false"
                 android:background="@drawable/button_style"
                 android:textSize="18sp"
-                android:text="Map with my trips"/>
+                android:text="@string/map_with_my_trips"/>
 
             <Button
                 android:id="@+id/btn_logout"

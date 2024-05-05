@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.activity
 
 import android.location.Address
 import android.location.Geocoder
@@ -13,6 +13,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import es.uc3m.android.traveltales.R
+import es.uc3m.android.traveltales.adapter.TripAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -25,7 +27,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var tripAdapter: TripAdapter
     private lateinit var tripCountryList: ArrayList<String>
     private lateinit var tripCityList: ArrayList<String>
-    private lateinit var geocoder: Geocoder
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)

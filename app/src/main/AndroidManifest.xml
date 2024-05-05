@@ -22,7 +22,7 @@
             android:value="ca-app-pub-3940256099942544~3347511713"/>
 
         <activity
-            android:name=".PeopleProfileActivity"
+            android:name=".activity.PeopleProfileActivity"
             android:exported="true"
             android:theme="@style/BottomMenuTheme" />
         <activity
@@ -30,11 +30,11 @@
             android:exported="true"
             android:theme="@style/BottomMenuTheme" />
         <activity
-            android:name=".Profile"
+            android:name=".activity.ProfileActivity"
             android:exported="true"
             android:theme="@style/BottomMenuTheme" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.TravelTales">
@@ -46,23 +46,23 @@
         </activity>
 
         <activity
-            android:name=".SignUpActivity"
+            android:name=".activity.SignUpActivity"
             android:exported="true"/>
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true"/>
 
         <activity
-            android:name=".AddTripActivity"
+            android:name=".activity.AddTripActivity"
             android:exported="true"/>
 
         <activity
-            android:name=".StatsActivity"
+            android:name=".activity.StatsActivity"
             android:exported="true"/>
         <service android:name=".WeatherService" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".activity.MapsActivity"
             android:theme="@style/BottomMenuTheme"
             android:exported="true" />
 

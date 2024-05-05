@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.activity
 
 import android.app.Activity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import es.uc3m.android.traveltales.R
 import java.text.SimpleDateFormat
 
 class StatsActivity : Activity() {
@@ -17,8 +18,6 @@ class StatsActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stats)
-
-
 
         tvCountriesVisited = findViewById(R.id.tv_countries_visited)
         tvAverageTripDuration = findViewById(R.id.tv_average_trip_duration)
@@ -32,7 +31,6 @@ class StatsActivity : Activity() {
         val db = FirebaseFirestore.getInstance()
         val auth = FirebaseAuth.getInstance()
 
-
         db.collection("trips")
             .whereEqualTo("userId", auth.currentUser?.uid)  // Filter by the user's ID
             .get()
@@ -41,10 +39,8 @@ class StatsActivity : Activity() {
 
                 val countriesVisited = tripList.mapNotNull { it["tripCountry"] as? String }.distinct().size
                 val tripsDone = tripList.size
-
                 val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", java.util.Locale("en", "US"))
                 // Calculate the duration in days for each trip
-
                 val tripDurationsInDays = tripList.mapNotNull {
                     val endDateString = it["tripEndDate"] as? String
                     val startDateString = it["tripStartDate"] as? String

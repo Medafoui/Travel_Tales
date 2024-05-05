@@ -45,5 +45,15 @@
     <string name="picture">Picture</string>
     <string name="average_trip_duration">Average Trip Duration: %d days</string>
     <string name="longest_trip">Longest Trip: %d days</string>
+    <string name="follow">Follow</string>
+    <string name="trips">Trips</string>
+    <string name="countries_visited_24">Countries Visited: 24</string>
+    <string name="average_trip_duration_7_days">Average Trip Duration: 7 days</string>
+    <string name="longest_trip_14_days">Longest Trip: 14 days</string>
+    <string name="trips_completed_40">Trips Completed: 40</string>
+    <string name="trips_of_following">Trips of following</string>
+    <string name="people">People</string>
+    <string name="map_with_my_trips">Map with my trips</string>
+    <string name="juan">Juan</string>
 
 </resources>

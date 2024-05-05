@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import es.uc3m.android.traveltales.R
+import es.uc3m.android.traveltales.data.PersonData
 
-class PeopleAdapter(var peopleList: List<Person>, private val listener: OnPersonClickListener ) : RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder>() {
+class PeopleAdapter(var peopleList: List<PersonData>, private val listener: OnPersonClickListener) : RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder>() {
 
     interface OnPersonClickListener {
         fun onPersonClick(position: Int)
@@ -32,7 +34,6 @@ class PeopleAdapter(var peopleList: List<Person>, private val listener: OnPerson
     }
 
     override fun getItemCount() = peopleList.size
-
 }
 
 

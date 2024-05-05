@@ -1,4 +1,4 @@
-package es.uc3m.android.traveltales
+package es.uc3m.android.traveltales.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -10,15 +10,11 @@ class MainActivity : Activity() {
     // Declare the FirebaseAuth and FirebaseFirestore instances
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-
-
     // Declare isFirstTime and initialize it to true
     private var isFirstTime = true
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         // Initialize the FirebaseAuth and FirebaseFirestore instances
         auth = FirebaseAuth.getInstance()
@@ -28,20 +24,13 @@ class MainActivity : Activity() {
         val currentUser = auth.currentUser
         if (currentUser != null) {
             // User is signed in, redirect to Profile activity
-            val intent = Intent(this, Profile::class.java)
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish() // Finish MainActivity so user can't go back to it
         } else {
-//            // No user is signed in, show the login or profile screen
-            val intent = Intent(this, Profile::class.java)
+            // No user is signed in, show the login or profile screen
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
-
-
-
         }
-
-
-
-        }
+    }
 }
-

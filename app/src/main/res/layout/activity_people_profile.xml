@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProfileFragment">
+    tools:context=".fragment.ProfileFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,6 @@
                 android:textSize="30sp"
                 android:textColor="@color/black"
                 android:text="@string/name" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -118,7 +117,7 @@
 
             <Button
                 android:id="@+id/btn_follow"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
@@ -126,7 +125,7 @@
                 android:textAllCaps="false"
                 android:background="@drawable/button_style"
                 android:textSize="18sp"
-                android:text="Follow"/>
+                android:text="@string/follow"/>
 
         </LinearLayout>
 
@@ -143,7 +142,7 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
-                android:text="Trips" />
+                android:text="@string/trips" />
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
